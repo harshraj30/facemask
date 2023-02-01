@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block title %} SignUp {% endblock title %}
+
+
+
+{% block page %}
+
+<form action="" method="post" {% url 'signUpPage' %}> 
+    {% csrf_token %}
+    <div class="h-[600px] flex justify-center items-center">
+        <div class="">
+            <div class="p-8 shadow-xl rounded-lg bg-white  flex flex-col gap-5 w-96 ">
+                <!-- <h1 class="text-xl font-semibold text-center underline">Enter Your Details</h1> -->
+                <div class="flex flex-1 w-full gap-2">
+                    <input class="border px-2 py-1 border-gray-300 w-full focus:border-blue-500 outline-none"
+                        type="text" name="Fname" placeholder="First Name">
+                    <input
+                        class="border px-2 py-1 focus:border-blue-500 border-gray-300 w-full outline-none focus:border-blue-500"
+                        type="text" name="Lname" placeholder="Last Name">
+                </div>
+                <div class="flex-col gap-5  flex">
+                    <input class="border px-2 py-1 outline-none focus:border-blue-500" name="Username" placeholder="User_Name"
+                        type="text">
+                    <input class="border px-2 py-1 outline-none focus:border-blue-500" name="Email" placeholder="Email" type="email">
+                    <input class="border px-2 py-1 outline-none focus:border-blue-500" name="DOB" placeholder="DOB" type="date">
+                    <div class="">
+                        <select class="focus:border-blue-500 w-full border px-2 py-1 outline-none
+                        border px-2 py-1 outline-none
+                        border px-2 py-1 outline-none" name="Gender" id="">
+                            <option value="" selected disabled>Select Gender</option>
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                            <option value="o">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-1 w-full gap-2">
+                        <input name="password" class="border-gray-300 border px-2 py-1 outline-none
+                        border px-2 py-1 outline-none
+                        border px-2 py-1 outline-none w-full outline-none focus:border-blue-500" type="password"
+                            placeholder="Password">
+                        <input name="conPassword" class="border-gray-300 border px-2 py-1 outline-none
+                        border px-2 py-1 outline-none
+                        border px-2 py-1 outline-none w-full outline-none focus:border-blue-500" type="password"
+                            placeholder="Confirm Password">
+                    </div>
+
+                </div>
+                <input name="Submit" class="bg-blue-500 hover:bg-blue-800 text-white px-3 cursor-pointer py-1" type="submit">
+                <div class="flex justify-end">
+                    <a class="text-red-500 hover:underline  mx-5 font-semibold hover-underline" href="{% url 'landingpage' %}">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock page %}

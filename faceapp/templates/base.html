@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} - Facemask </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    
+    <div class="bg-blue-500 py-3 items-center justify-between flex px-8 ">
+        <h1 class=" text-2xl font-bold cursor-pointer text-white">FaceMask</h1>
+        <!-- <div class="flex">
+            <input class="px-2" placeholder="search" size="30" type="text">
+            <input class="bg-red-500 text-white hover:bg-red-800 px-3 py-1 " type="submit">
+        </div> -->
+        <div class="flex gap-5">
+            <a class="hover:text-white font-semibold" href="">Home</a>
+            <a class="hover:text-white font-semibold" href="">about</a>
+        </div>
+    </div>
+    
+    {% block page %}{% endblock page %}
+    
+</body>
+</html>
