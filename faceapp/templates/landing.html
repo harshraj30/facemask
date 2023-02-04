@@ -5,12 +5,32 @@
 {% block title %} Login {% endblock title %}
 
 
+{% block navbar %}{% endblock navbar %}
+
+
 
 
 
 {% block page %}
+
+
+
+<div class="bg-blue-500 py-3 items-center justify-between flex px-8 ">
+    <h1 class=" text-2xl font-bold cursor-pointer text-white">FaceMask</h1>
+    <!-- <div class="flex">
+        <input class="px-2" placeholder="search" size="30" type="text">
+        <input class="bg-red-500 text-white hover:bg-red-800 px-3 py-1 " type="submit">
+    </div> -->
+    <div class="flex gap-5">
+        <a class="hover:text-white font-semibold" href="">Home</a>
+        <a class="hover:text-white font-semibold" href="">about</a>
+    </div>
+</div>
+
+
 <form action="{% url 'landingpage' %}" method="post">
     {% csrf_token %}
+
     <section class=" text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
             <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -19,28 +39,51 @@
                 <p class="leading-relaxed mt-4">mai_hu_harsh your host and your dost hope fully you like this app
                     otherwise go to hell buddy</p>
             </div>
+
+
+
             <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+
+
+                {% for message in messages %}
+                <div class="{% if message.tags == 'error' %}bg-rose-100 text-rose-900 border-rose-500 {% endif %}{% if message.tags == 'success' %}bg-green-100 text-green-900 border-green-500{% endif %} mb-5 duration-500 border-t-4 rounded-b px-4 py-3 shadow-md"
+                    role="alert">
+                    <div class="flex">
+                        <div class="py-1">{% if message.tags == 'error' %}<svg
+                                class="fill-current h-6 w-6 text-rose-500 mr-4"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path
+                                    d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                            </svg>{% endif %}
+                            {% if message.tags == 'success' %}<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-green-800 mr-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                              </svg>
+                              {% endif %}
+                        </div>
+                        {{message|safe}}
+                    </div>
+                </div>
+                {% endfor %}
+
                 <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
                 <div class="relative mb-4">
-                    <label for="full-name" class="leading-7 text-sm text-gray-600">Full Name</label>
-                    <input type="text" id="full-name" name="full-name"
+                    <label for="full-name" class="leading-7 text-sm text-gray-600">Username</label>
+                    <input autofocus type="text" id="full-name" name="full-name"
                         class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                 </div>
                 <div class="relative mb-4">
                     <label for="email" class="leading-7 text-sm text-gray-600">Password</label>
-                    <input type="password" id="" name="password" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <input type="password" id="" name="password"
+                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                 </div>
                 <button
                     class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                 <div class="mt-5 text-end">
-                    <a class="text-red-500 font-semibold hover:underline  w-fit" href="{% url 'signUpPage' %}">create new account</a>
+                    <a class="text-red-500 font-semibold hover:underline  w-fit" href="{% url 'signUpPage' %}">create
+                        new account</a>
                 </div>
             </div>
         </div>
     </section>
 </form>
 {% endblock page %}
-
-
-
-

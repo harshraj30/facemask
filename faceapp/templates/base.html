@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,21 +8,40 @@
     <title>{% block title %}{% endblock title %} - Facemask </title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-    
-    <div class="bg-blue-500 py-3 items-center justify-between flex px-8 ">
-        <h1 class=" text-2xl font-bold cursor-pointer text-white">FaceMask</h1>
+
+
+    {% block navbar %}
+
+    <div class="bg-green-500 py-2 items-center justify-between flex px-8 ">
+        <h1 class=" text-3xl font-semibold cursor-pointer text-white">FaceMask</h1>
         <!-- <div class="flex">
             <input class="px-2" placeholder="search" size="30" type="text">
             <input class="bg-red-500 text-white hover:bg-red-800 px-3 py-1 " type="submit">
         </div> -->
-        <div class="flex gap-5">
-            <a class="hover:text-white font-semibold" href="">Home</a>
-            <a class="hover:text-white font-semibold" href="">about</a>
+        <div class="flex items-center gap-5">
+
+            <a href="" class="flex text-white font-semibold items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-white w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              
+              {{user.first_name}} {{user.last_name}}</a>
+            <form action="{% url 'dashboard' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="hover:bg-rose-800 bg-rose-500 px-3 py-1 text-white text-sm font-semibold rounded-lg">LogOut</button>
+            </form>
         </div>
     </div>
-    
+
+    {% endblock navbar %}
+
     {% block page %}{% endblock page %}
-    
+
+
+    {% block content %}{% endblock content %}
+
+
 </body>
+
 </html>

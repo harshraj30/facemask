@@ -3,9 +3,25 @@
 
 {% block title %} SignUp {% endblock title %}
 
+{% block navbar %}{% endblock navbar %}
 
 
 {% block page %}
+
+<div class="bg-blue-500 py-3 items-center justify-between flex px-8 ">
+    <h1 class=" text-2xl font-bold cursor-pointer text-white">FaceMask</h1>
+    <!-- <div class="flex">
+        <input class="px-2" placeholder="search" size="30" type="text">
+        <input class="bg-red-500 text-white hover:bg-red-800 px-3 py-1 " type="submit">
+    </div> -->
+    <div class="flex gap-5">
+        <a class="hover:text-white font-semibold" href="">Home</a>
+        <a class="hover:text-white font-semibold" href="">about</a>
+    </div>
+</div>
+
+
+
 
 <form action="" method="post" {% url 'signUpPage' %}> 
     {% csrf_token %}
@@ -14,7 +30,7 @@
             <div class="p-8 shadow-xl rounded-lg bg-white  flex flex-col gap-5 w-96 ">
                 <!-- <h1 class="text-xl font-semibold text-center underline">Enter Your Details</h1> -->
                 <div class="flex flex-1 w-full gap-2">
-                    <input class="border px-2 py-1 border-gray-300 w-full focus:border-blue-500 outline-none"
+                    <input autofocus class="border px-2 py-1 border-gray-300 w-full focus:border-blue-500 outline-none"
                         type="text" name="Fname" placeholder="First Name">
                     <input
                         class="border px-2 py-1 focus:border-blue-500 border-gray-300 w-full outline-none focus:border-blue-500"
